@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aku Anak Tertib di Sekolah</title>
+<style>
+:root{--bg:#fff7e6;--card:#ffffff;--ink:#2b2250;--mut:#6b6490;--pri:#7c4dff;--pri2:#5a35d6;--ok:#1fa971;--okbg:#e2f8ee;--no:#e8575a;--nobg:#ffe9e9;--gold:#ffb703;--line:#eadfff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1535;--card:#2a2250;--ink:#fff4d6;--mut:#c2b8ee;--pri:#a98bff;--pri2:#8d6bff;--ok:#4ade9c;--okbg:#17382d;--no:#ff8a8c;--nobg:#432434;--gold:#ffd166;--line:#3d3470}}
+:root[data-theme="dark"]{--bg:#1b1535;--card:#2a2250;--ink:#fff4d6;--mut:#c2b8ee;--pri:#a98bff;--pri2:#8d6bff;--ok:#4ade9c;--okbg:#17382d;--no:#ff8a8c;--nobg:#432434;--gold:#ffd166;--line:#3d3470}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Baloo 2","Comic Sans MS","Trebuchet MS",system-ui,sans-serif;font-size:18px;line-height:1.5}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 16px 6px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.bar{height:12px;background:var(--line);border-radius:99px;overflow:hidden;max-width:760px;margin:auto}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--pri));border-radius:99px;transition:width .5s}
+main{max-width:760px;margin:auto;padding:8px 16px 40px}
+.slide{display:none;animation:pop .45s ease}
+.slide.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.card{background:var(--card);border:3px solid var(--line);border-radius:28px;padding:22px;box-shadow:0 8px 0 var(--line);margin:12px 0}
+h1{font-size:2rem;line-height:1.15;margin:.2em 0;color:var(--pri)}
+h2{font-size:1.5rem;margin:.2em 0 .4em;color:var(--pri)}
+p{margin:.4em 0}
+.hero{text-align:center}
+.big{font-size:5rem;display:inline-block;animation:bob 2.2s ease-in-out infinite}
+.row{display:flex;gap:8px;justify-content:center;font-size:2.2rem}
+.row span{animation:bob 2s ease-in-out infinite}.row span:nth-child(2){animation-delay:.3s}.row span:nth-child(3){animation-delay:.6s}.row span:nth-child(4){animation-delay:.9s}
+.tag{display:inline-block;background:var(--gold);color:#3b2a00;border-radius:99px;padding:2px 14px;font-weight:800;font-size:.95rem}
+button{font:inherit;font-weight:800;border:0;border-radius:18px;padding:14px 20px;cursor:pointer;color:#fff;background:var(--pri);box-shadow:0 5px 0 var(--pri2);transition:transform .1s}
+button:active{transform:translateY(4px);box-shadow:0 1px 0 var(--pri2)}
+button:disabled{opacity:.55;cursor:default}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+.ghost{background:var(--card);color:var(--pri);box-shadow:0 5px 0 var(--line);border:3px solid var(--line)}
+.goals{list-style:none;padding:0;margin:0}
+.goals li{display:flex;gap:12px;align-items:center;padding:10px 0;font-weight:700}
+.goals b{font-size:2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.rule{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:14px;text-align:center}
+.rule .e{font-size:3rem;display:block}
+.rule b{display:block;color:var(--pri)}
+.opts{display:grid;gap:10px;margin-top:12px}
+.opt{background:var(--card);color:var(--ink);border:3px solid var(--line);box-shadow:0 5px 0 var(--line);text-align:left}
+.opt.ok{background:var(--okbg);border-color:var(--ok);box-shadow:0 5px 0 var(--ok)}
+.opt.no{background:var(--nobg);border-color:var(--no);box-shadow:0 5px 0 var(--no);animation:shake .4s}
+.fb{margin-top:14px;padding:14px;border-radius:20px;font-weight:700;animation:pop .35s}
+.fb.ok{background:var(--okbg);color:var(--ok)}
+.fb.no{background:var(--nobg);color:var(--no)}
+.fb small{display:block;font-weight:600;color:var(--ink);margin-top:4px}
+.q{font-size:1.35rem;font-weight:800}
+.score{font-weight:800;color:var(--mut)}
+.stars{font-size:3rem;letter-spacing:4px}
+.emo{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.emo button{font-size:1.1rem;background:var(--card);color:var(--ink);border:3px solid var(--line);box-shadow:0 5px 0 var(--line)}
+.emo button span{display:block;font-size:2.4rem}
+.confetti{position:fixed;top:-30px;font-size:1.6rem;pointer-events:none;z-index:20;animation:fall 2.4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:.8}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><div class="bar"><i id="pg"></i></div></div>
+<main>
+
+<section class="slide on hero" data-s>
+  <div class="card">
+    <div class="big">🏫</div>
+    <h1>Aku Anak Tertib di Sekolah!</h1>
+    <p><span class="tag">Pendidikan Pancasila • Kelas 1 SD</span></p>
+    <div class="row"><span>🎒</span><span>📚</span><span>✏️</span><span>⭐</span></div>
+    <p>Halo, teman-teman hebat! 👋<br>Ayo belajar aturan di sekolah bersama-sama.</p>
+    <p class="score">Dibuat untuk murid kelas 1 SD</p>
+  </div>
+</section>
+
+<section class="slide" data-s>
+  <div class="card">
+    <h2>🎯 Tujuan Belajar Kita</h2>
+    <p>Setelah belajar, aku bisa:</p>
+    <ul class="goals">
+      <li><b>👀</b> Mengenal aturan di sekolah.</li>
+      <li><b>💡</b> Tahu mengapa aturan itu penting.</li>
+      <li><b>🌟</b> Melakukan aturan sekolah setiap hari.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide" data-s>
+  <div class="card">
+    <h2>📖 Ayo Kenali Aturan Sekolah</h2>
+    <p>Aturan membuat sekolah aman, rapi, dan menyenangkan. Ketuk kartu untuk mendengar tips!</p>
+    <div class="grid" id="rules"></div>
+    <div class="fb ok" id="tip" style="display:none"></div>
+  </div>
+</section>
+
+<section class="slide" data-s>
+  <div class="card">
+    <h2>🎮 Aktivitas: Aturan Baik atau Bukan?</h2>
+    <p id="aq" class="q"></p>
+    <div class="emo" style="margin-top:10px">
+      <button id="aYes" class="emo-b"><span style="font-size:2rem;display:block">👍</span>Aturan baik</button>
+      <button id="aNo" class="emo-b" style="background:var(--no);box-shadow:0 5px 0 #b13c3f"><span style="font-size:2rem;display:block">👎</span>Bukan aturan baik</button>
+    </div>
+    <div id="afb"></div>
+    <p class="score" id="acount"></p>
+  </div>
+</section>
+
+<section class="slide" data-s>
+  <div class="card">
+    <p class="score" id="qn"></p>
+    <p class="q" id="qt"></p>
+    <div class="opts" id="qo"></div>
+    <div id="qfb"></div>
+    <div class="nav"><span class="score" id="qs"></span><button id="qnext" style="display:none">Lanjut ➡️</button></div>
+  </div>
+</section>
+
+<section class="slide hero" data-s>
+  <div class="card">
+    <h2>🏆 Hasil Kuis</h2>
+    <div class="stars" id="stars"></div>
+    <p class="q" id="res"></p>
+    <p id="resm"></p>
+    <h2 style="margin-top:20px">💭 Ayo Refleksi</h2>
+    <p>Bagaimana perasaanmu setelah belajar hari ini?</p>
+    <div class="emo">
+      <button data-r="0"><span>😄</span>Aku paham!</button>
+      <button data-r="1"><span>🙂</span>Lumayan paham</button>
+      <button data-r="2"><span>🤔</span>Masih belajar</button>
+    </div>
+    <div id="rfb"></div>
+    <p style="margin-top:14px"><b>Janjiku:</b> Besok aku akan menaati aturan sekolah! 💪</p>
+    <button id="again" class="ghost">🔁 Main lagi</button>
+  </div>
+</section>
+
+<div class="nav" id="nav">
+  <button class="ghost" id="prev">⬅️ Kembali</button>
+  <button id="next">Lanjut ➡️</button>
+</div>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+const slides=[...document.querySelectorAll('[data-s]')];
+let cur=0;
+function show(i){
+  cur=i;slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+  $('#pg').style.width=((i+1)/slides.length*100)+'%';
+  $('#prev').style.visibility=i===0?'hidden':'visible';
+  $('#nav').style.display=(i===4||i===5)?'none':'flex';
+  $('#next').textContent=i===0?'Mulai Belajar 🚀':'Lanjut ➡️';
+  $('#next').disabled=(i===3&&!actDone);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+$('#next').onclick=()=>{if(cur<slides.length-1){show(cur+1);if(cur===4)startQuiz()}};
+$('#prev').onclick=()=>show(Math.max(0,cur-1));
+
+/* Materi */
+const rules=[
+ ['⏰','Datang tepat waktu','Bangun pagi agar tidak terlambat, ya!'],
+ ['👕','Memakai seragam rapi','Seragam rapi membuat kita bangga jadi murid.'],
+ ['🗑️','Buang sampah di tempatnya','Kelas bersih, belajar jadi nyaman.'],
+ ['👂','Mendengarkan guru','Angkat tangan dulu kalau ingin bicara.'],
+ ['🚶','Tidak berlari di kelas','Berjalan pelan agar tidak jatuh dan menabrak.'],
+ ['🤝','Menolong dan sopan','Ucapkan salam, tolong, dan terima kasih.']
+];
+const rg=$('#rules');
+rules.forEach(r=>{
+  const d=document.createElement('button');d.className='rule opt';d.style.textAlign='center';
+  d.innerHTML=`<span class="e">${r[0]}</span><b>${r[1]}</b>`;
+  d.onclick=()=>{const t=$('#tip');t.style.display='block';t.innerHTML=`${r[0]} ${r[2]}`};
+  rg.appendChild(d);
+});
+
+/* Aktivitas */
+const act=[
+ ['Memakai seragam dengan rapi',1],['Membuang sampah sembarangan',0],['Mengangkat tangan sebelum bicara',1],
+ ['Berlari-lari di dalam kelas',0],['Mendengarkan penjelasan guru',1],['Mengambil mainan teman tanpa izin',0]
+];
+let ai=0,actDone=false,aLock=false;
+function showAct(){
+  if(ai>=act.length){actDone=true;$('#aq').innerHTML='🎉 Hebat! Semua selesai!';$('#aYes').parentNode.style.display='none';$('#afb').innerHTML='';$('#acount').textContent='Tekan Lanjut untuk kuis ya!';$('#next').disabled=false;confetti();return}
+  $('#aq').textContent=`${ai+1}. ${act[ai][0]}`;$('#acount').textContent=`Kartu ${ai+1} dari ${act.length}`;aLock=false;
+}
+function ansAct(v){
+  if(aLock)return;aLock=true;const ok=act[ai][1]===v;
+  $('#afb').innerHTML=ok?`<div class="fb ok">✅ Betul sekali! Pintar!</div>`:`<div class="fb no">💛 Belum tepat. ${act[ai][1]?'Itu aturan baik yang harus kita lakukan.':'Itu tidak boleh dilakukan di sekolah.'}<small>Tidak apa-apa, ayo coba kartu berikutnya!</small></div>`;
+  setTimeout(()=>{ai++;$('#afb').innerHTML='';showAct()},ok?1100:2400);
+}
+$('#aYes').onclick=()=>ansAct(1);$('#aNo').onclick=()=>ansAct(0);
+showAct();
+
+/* Kuis */
+const TF=['Benar ✅','Salah ❌'];
+const Q=[
+ ['Agar tidak terlambat, kita harus ...',['Datang tepat waktu','Datang kapan saja','Tidur lagi'],0,'Datang tepat waktu membuat kita siap belajar.'],
+ ['Memakai seragam dengan rapi adalah aturan sekolah.',TF,0,'Seragam rapi adalah aturan sekolah yang baik.'],
+ ['Bungkus permen dibuang di ...',['Laci meja','Tempat sampah','Kolong kursi'],1,'Sampah harus masuk ke tempat sampah supaya kelas bersih.'],
+ ['Boleh berlari-lari di dalam kelas.',TF,1,'Berlari di kelas bisa membuat kita atau teman jatuh.'],
+ ['Saat guru menjelaskan, kita harus ...',['Mengobrol','Mendengarkan','Bermain'],1,'Mendengarkan guru membuat kita pintar.'],
+ ['Kita mengangkat tangan sebelum bertanya.',TF,0,'Mengangkat tangan adalah cara sopan untuk bertanya.'],
+ ['Teman terjatuh. Kita sebaiknya ...',['Menolong','Menertawakan','Pergi saja'],0,'Menolong teman adalah perbuatan baik.'],
+ ['Boleh mengambil pensil teman tanpa izin.',TF,1,'Kita harus meminta izin dulu kalau ingin meminjam.'],
+ ['Saat bertemu guru, kita mengucapkan ...',['Diam saja','Hei!','Selamat pagi, Bu/Pak'],2,'Salam menunjukkan bahwa kita anak yang sopan.'],
+ ['Membuang sampah sembarangan di halaman itu baik.',TF,1,'Sampah sembarangan membuat sekolah kotor.'],
+ ['Saat membeli jajan, kita ...',['Berebut','Menyerobot','Antre dengan rapi'],2,'Antre membuat semua orang mendapat giliran.'],
+ ['Menjaga kebersihan kelas adalah tugas kita semua.',TF,0,'Kelas bersih adalah tanggung jawab kita bersama.'],
+ ['Mengapa ada aturan di sekolah?',['Supaya sekolah tertib dan aman','Supaya kita dimarahi','Supaya kita bosan'],0,'Aturan dibuat agar semua murid aman dan nyaman.'],
+ ['Kita boleh berteriak keras saat teman-teman belajar.',TF,1,'Berteriak mengganggu teman yang sedang belajar.'],
+ ['Murid yang menaati aturan adalah anak yang ...',['Tertib dan disiplin','Suka melanggar','Malas'],0,'Menaati aturan membuat kita menjadi anak tertib dan disiplin.']
+];
+const OKM=['Hore, jawabanmu benar! 🎉','Hebat sekali, kamu pintar! 🌟','Bagus! Terus semangat! 👏','Keren! Kamu murid teladan! 🏅'];
+const NOM=['Tidak apa-apa, ayo semangat! 💪','Salah itu wajar, kita belajar lagi ya! 🌈','Jangan menyerah, kamu pasti bisa! 🤗'];
+let qi=0,score=0,locked=false;
+function startQuiz(){qi=0;score=0;renderQ()}
+function renderQ(){
+  const [t,o,a]=Q[qi];locked=false;
+  $('#qn').textContent=`Soal ${qi+1} dari ${Q.length}`;
+  $('#qt').textContent=t;$('#qfb').innerHTML='';$('#qnext').style.display='none';
+  $('#qs').textContent=`⭐ ${score}`;
+  const box=$('#qo');box.innerHTML='';
+  o.forEach((x,k)=>{const b=document.createElement('button');b.className='opt';b.textContent=x;b.onclick=()=>pick(k,b);box.appendChild(b)});
+}
+function pick(k,b){
+  if(locked)return;locked=true;
+  const [t,o,a,e]=Q[qi];const btns=[...document.querySelectorAll('#qo .opt')];
+  if(k===a){score++;b.classList.add('ok');$('#qfb').innerHTML=`<div class="fb ok">${OKM[qi%OKM.length]}</div>`;if(qi%5===4)confetti(12)}
+  else{b.classList.add('no');btns[a].classList.add('ok');$('#qfb').innerHTML=`<div class="fb no">${NOM[qi%NOM.length]}<small>Penjelasan: ${e}</small></div>`}
+  $('#qs').textContent=`⭐ ${score}`;
+  const n=$('#qnext');n.style.display='inline-block';n.textContent=qi===Q.length-1?'Lihat Hasil 🏆':'Lanjut ➡️';
+}
+$('#qnext').onclick=()=>{if(qi<Q.length-1){qi++;renderQ()}else finish()};
+function finish(){
+  show(5);
+  const st=score>=13?3:score>=9?2:1;
+  $('#stars').textContent='⭐'.repeat(st)+'☆'.repeat(3-st);
+  $('#res').textContent=`Kamu benar ${score} dari ${Q.length} soal!`;
+  $('#resm').textContent=score>=13?'Luar biasa! Kamu anak tertib sejati! 🎖️':score>=9?'Bagus! Sedikit lagi kamu jadi juara! 🌟':'Tidak apa-apa. Ayo belajar lagi, kamu pasti bisa! 💪';
+  $('#rfb').innerHTML='';
+  if(score>=9)confetti();
+}
+document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{
+  const m=['Wah, hebat! Ajak temanmu menaati aturan juga ya! 🌟','Bagus! Besok kita coba lagi supaya makin paham. 😊','Tidak apa-apa. Tanya Bu/Pak Guru kalau bingung ya. 🤗'];
+  $('#rfb').innerHTML=`<div class="fb ok">${m[b.dataset.r]}</div>`;
+});
+$('#again').onclick=()=>{ai=0;actDone=false;$('#aYes').parentNode.style.display='flex';showAct();show(0)};
+
+function confetti(n=24){
+  const e=['⭐','🎉','✨','🌟','🎈'];
+  for(let i=0;i<n;i++){const s=document.createElement('span');s.className='confetti';s.textContent=e[i%e.length];
+    s.style.left=Math.random()*100+'vw';s.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),3400)}
+}
+show(0);
+</script>
+</body>
+</html>
